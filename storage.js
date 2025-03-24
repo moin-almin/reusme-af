@@ -3,33 +3,39 @@
  */
 
 // Save resume data to Chrome storage
-function saveResume(resumeData) {
-  console.log('Saving resume data:', resumeData);
+function saveResume(data) {
   return new Promise((resolve, reject) => {
-    chrome.storage.local.set({ resumeData }, () => {
-      if (chrome.runtime.lastError) {
-        console.error('Error saving resume data:', chrome.runtime.lastError);
-        reject(chrome.runtime.lastError);
-      } else {
-        console.log('Resume data saved successfully');
-        resolve();
-      }
-    });
+    try {
+      chrome.storage.local.set({ resume: data }, () => {
+        if (chrome.runtime.lastError) {
+          reject(new Error(chrome.runtime.lastError));
+        } else {
+          console.log('Resume data saved successfully');
+          resolve(true);
+        }
+      });
+    } catch (error) {
+      console.error('Error saving resume data:', error);
+      reject(error);
+    }
   });
 }
 
 // Get resume data from Chrome storage
 function getResume() {
   return new Promise((resolve, reject) => {
-    chrome.storage.local.get('resumeData', (result) => {
-      if (chrome.runtime.lastError) {
-        console.error('Error retrieving resume data:', chrome.runtime.lastError);
-        reject(chrome.runtime.lastError);
-      } else {
-        console.log('Retrieved resume data:', result.resumeData || {});
-        resolve(result.resumeData || {});
-      }
-    });
+    try {
+      chrome.storage.local.get(['resume'], (result) => {
+        if (chrome.runtime.lastError) {
+          reject(new Error(chrome.runtime.lastError));
+        } else {
+          resolve(result.resume || {});
+        }
+      });
+    } catch (error) {
+      console.error('Error retrieving resume data:', error);
+      reject(error);
+    }
   });
 }
 
@@ -216,4 +222,51 @@ function createExperienceEntry() {
     <button type="button" class="remove-entry">Remove</button>
   `;
   return entry;
+}
+
+// Function to save OpenAI API key to Chrome storage
+function saveOpenAIKey(apiKey) {
+  return new Promise((resolve, reject) => {
+    try {
+      chrome.storage.local.set({ openai_api_key: apiKey }, () => {
+        if (chrome.runtime.lastError) {
+          reject(new Error(chrome.runtime.lastError));
+        } else {
+          console.log('OpenAI API key saved successfully');
+          resolve(true);
+        }
+      });
+    } catch (error) {
+      console.error('Error saving OpenAI API key:', error);
+      reject(error);
+    }
+  });
+}
+
+// Function to get OpenAI API key from Chrome storage
+function getOpenAIKey() {
+  return new Promise((resolve, reject) => {
+    try {
+      chrome.storage.local.get(['openai_api_key'], (result) => {
+        if (chrome.runtime.lastError) {
+          reject(new Error(chrome.runtime.lastError));
+        } else {
+          resolve(result.openai_api_key || null);
+        }
+      });
+    } catch (error) {
+      console.error('Error retrieving OpenAI API key:', error);
+      reject(error);
+    }
+  });
+}
+
+// Export functions for use in other scripts
+if (typeof module !== 'undefined') {
+  module.exports = {
+    saveResume,
+    getResume,
+    saveOpenAIKey,
+    getOpenAIKey
+  };
 } 

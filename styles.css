@@ -1,3 +1,20 @@
+:root {
+  --primary-color: #4361EE;
+  --primary-light: #D9E1FF;
+  --secondary-color: #3CCFCF;
+  --accent-color: #6C63FF;
+  --text-color: #2D3748;
+  --light-gray: #F0F4F8;
+  --medium-gray: #CBD5E0;
+  --dark-gray: #4A5568;
+  --success-color: #38B2AC;
+  --error-color: #E53E3E;
+  --warning-color: #805AD5;
+  --white: #fff;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,17 +22,24 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f7f7f7;
+  color: var(--text-color);
+  background-color: var(--light-gray);
 }
 
 .container {
   width: 400px;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.popup-container {
+  width: 400px;
+  padding: 20px;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
 }
 
 .resume-page {
@@ -25,30 +49,32 @@ body {
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
   text-align: center;
-  color: #2c3e50;
 }
 
 h2 {
   font-size: 18px;
   margin-bottom: 15px;
-  color: #3498db;
-  border-bottom: 1px solid #eee;
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--medium-gray);
   padding-bottom: 5px;
 }
 
 h3 {
   font-size: 16px;
   margin: 15px 0 10px;
+  color: var(--primary-color);
 }
 
 /* Tabs */
 #tabs {
   display: flex;
   margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--medium-gray);
 }
 
 .tab-button {
@@ -58,17 +84,17 @@ h3 {
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #7f8c8d;
+  color: var(--dark-gray);
   transition: all 0.3s ease;
 }
 
 .tab-button:hover {
-  background-color: #f1f1f1;
+  background-color: var(--light-gray);
 }
 
 .tab-button.active {
-  color: #3498db;
-  border-bottom: 2px solid #3498db;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
   font-weight: bold;
 }
 
@@ -82,61 +108,125 @@ h3 {
 
 /* Resume actions */
 .resume-actions {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.fill-actions {
-  margin-top: 20px;
   margin-bottom: 15px;
   text-align: center;
 }
 
+.fill-actions {
+  margin-bottom: 10px;
+}
+
 .primary-button {
-  background-color: #9b59b6;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 15px 20px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  width: 100%;
+  font-size: 16px;
   transition: background-color 0.3s;
+  width: 100%;
+  font-weight: 500;
 }
 
 .primary-button:hover {
-  background-color: #8e44ad;
+  background-color: #3651D4;
 }
 
 .secondary-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  background-color: var(--light-gray);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 14px;
-  width: 100%;
   transition: background-color 0.3s;
+  width: 100%;
+  font-weight: 500;
 }
 
 .secondary-button:hover {
-  background-color: #2980b9;
+  background-color: var(--primary-light);
 }
 
 #fill-form {
   font-size: 18px;
-  padding: 15px 20px;
+  padding: 12px 20px;
+  background-color: var(--accent-color);
 }
 
 #fill-form:hover {
-  background-color: #8e44ad;
+  background-color: #5A53E5;
+}
+
+/* AI Settings Styles */
+.settings-section {
+  margin-top: 20px;
+  border-top: 1px solid var(--medium-gray);
+  padding-top: 15px;
+}
+
+.settings-section summary {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}
+
+.api-key-section {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+}
+
+.api-key-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.api-key-section input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.small-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.small-button:hover {
+  background-color: #40D3B2;
+}
+
+.small-text {
+  font-size: 12px;
+  color: var(--dark-gray);
+  margin-top: 8px;
+}
+
+/* Disabled button state */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Form styling */
 .form-section {
-  margin-bottom: 25px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .form-group {
@@ -152,10 +242,16 @@ label {
 input, textarea {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--border-radius);
   font-family: inherit;
   font-size: 14px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
 
 textarea {
@@ -164,27 +260,27 @@ textarea {
 }
 
 button {
-  background-color: #3498db;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #3A80D2;
 }
 
 /* Education and Experience sections */
 .education-entry, .experience-entry {
-  border: 1px solid #eee;
+  border: 1px solid var(--medium-gray);
   padding: 15px;
   margin-bottom: 15px;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+  border-radius: var(--border-radius);
+  background-color: var(--light-gray);
 }
 
 #add-education, #add-experience {
@@ -267,4 +363,14 @@ button:hover {
   border-radius: 4px;
   text-align: center;
   font-weight: bold;
+}
+
+/* Rate limit warning */
+.rate-limit-warning {
+  color: var(--warning-color);
+  background-color: rgba(128, 90, 213, 0.1);
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  font-size: 12px;
+  margin-top: 8px;
 } 

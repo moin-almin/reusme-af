@@ -3,112 +3,197 @@
 <head>
   <meta charset="utf-8">
   <title>Resume Form Filler - Edit Resume</title>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resume-styles.css">
 </head>
 <body>
-  <div class="container resume-page">
-    <h1>Resume Form Filler</h1>
-    
-    <div class="form-section">
-      <h2>Personal Information</h2>
-      <form id="resume-form">
-        <div class="form-group">
-          <label for="fullName">Full Name</label>
-          <input type="text" id="fullName" name="fullName">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email">
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone">
-        </div>
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" id="address" name="address">
-        </div>
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" id="city" name="city">
-        </div>
-        <div class="form-group">
-          <label for="state">State</label>
-          <input type="text" id="state" name="state">
-        </div>
-        <div class="form-group">
-          <label for="zipCode">Zip Code</label>
-          <input type="text" id="zipCode" name="zipCode">
-        </div>
+  <div class="container">
+    <div class="resume-card">
+      <h1>Resume Settings</h1>
+      <p class="subtitle">Enter your resume details below. This information will be used to autofill job applications.</p>
       
-        <div class="form-section">
-          <h2>Education</h2>
-          <div id="education-container">
-            <div class="education-entry">
-              <div class="form-group">
-                <label for="university">University/College</label>
-                <input type="text" class="university" name="university">
-              </div>
-              <div class="form-group">
-                <label for="degree">Degree</label>
-                <input type="text" class="degree" name="degree">
-              </div>
-              <div class="form-group">
-                <label for="major">Major</label>
-                <input type="text" class="major" name="major">
-              </div>
-              <div class="form-group">
-                <label for="graduationDate">Graduation Date</label>
-                <input type="text" class="graduationDate" name="graduationDate">
-              </div>
-              <div class="form-group">
-                <label for="gpa">GPA</label>
-                <input type="text" class="gpa" name="gpa">
-              </div>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="personal">Personal Info</button>
+        <button class="tab-button" data-tab="experience">Experience</button>
+        <button class="tab-button" data-tab="education">Education</button>
+        <button class="tab-button" data-tab="skills">Skills</button>
+        <button class="tab-button" data-tab="ai-settings">AI Settings</button>
+      </div>
+      
+      <form id="resume-form">
+        <div class="tab-content active" id="personal-tab">
+          <div class="field-row">
+            <div class="field-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="e.g. John Smith">
+            </div>
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="e.g. john@example.com">
             </div>
           </div>
-          <button type="button" id="add-education">Add Another Education</button>
+          
+          <div class="field-row">
+            <div class="field-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. (123) 456-7890">
+            </div>
+            <div class="field-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" placeholder="Street address">
+            </div>
+          </div>
+          
+          <div class="field-row">
+            <div class="field-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" placeholder="e.g. New York">
+            </div>
+            <div class="field-group">
+              <label for="state">State</label>
+              <input type="text" id="state" name="state" placeholder="e.g. NY">
+            </div>
+          </div>
+          
+          <div class="field-row">
+            <div class="field-group">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" id="zipCode" name="zipCode" placeholder="e.g. 10001">
+            </div>
+            <div class="field-group">
+              <label for="linkedin">LinkedIn URL</label>
+              <input type="text" id="linkedin" name="linkedin" placeholder="e.g. linkedin.com/in/username">
+            </div>
+          </div>
+          
+          <div class="field-row">
+            <div class="field-group full-width">
+              <label for="website">Personal Website</label>
+              <input type="text" id="website" name="website" placeholder="e.g. yourwebsite.com">
+            </div>
+          </div>
         </div>
         
-        <div class="form-section">
-          <h2>Work Experience</h2>
+        <div class="tab-content" id="experience-tab">
           <div id="experience-container">
-            <div class="experience-entry">
-              <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" class="company" name="company">
+            <div class="experience-entry card">
+              <div class="entry-header">
+                <h3>Work Experience</h3>
+                <button type="button" class="remove-entry" title="Remove entry">×</button>
               </div>
-              <div class="form-group">
-                <label for="jobTitle">Job Title</label>
-                <input type="text" class="jobTitle" name="jobTitle">
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="company">Company</label>
+                  <input type="text" class="company" name="company" placeholder="e.g. Acme Corporation">
+                </div>
+                <div class="field-group">
+                  <label for="jobTitle">Job Title</label>
+                  <input type="text" class="jobTitle" name="jobTitle" placeholder="e.g. Software Engineer">
+                </div>
               </div>
-              <div class="form-group">
-                <label for="startDate">Start Date</label>
-                <input type="text" class="startDate" name="startDate">
+              
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="startDate">Start Date</label>
+                  <input type="text" class="startDate" name="startDate" placeholder="e.g. Jan 2020">
+                </div>
+                <div class="field-group">
+                  <label for="endDate">End Date</label>
+                  <input type="text" class="endDate" name="endDate" placeholder="e.g. Present">
+                </div>
               </div>
-              <div class="form-group">
-                <label for="endDate">End Date</label>
-                <input type="text" class="endDate" name="endDate">
-              </div>
-              <div class="form-group">
-                <label for="responsibilities">Responsibilities</label>
-                <textarea class="responsibilities" name="responsibilities"></textarea>
+              
+              <div class="field-row">
+                <div class="field-group full-width">
+                  <label for="responsibilities">Responsibilities</label>
+                  <textarea class="responsibilities" name="responsibilities" placeholder="Describe your key responsibilities and achievements"></textarea>
+                </div>
               </div>
             </div>
           </div>
-          <button type="button" id="add-experience">Add Another Experience</button>
+          <button type="button" id="add-experience" class="add-button">+ Add Another Experience</button>
         </div>
         
-        <div class="form-section">
-          <h2>Skills</h2>
-          <div class="form-group">
-            <label for="skills">Skills (separate with commas)</label>
-            <textarea id="skills" name="skills"></textarea>
+        <div class="tab-content" id="education-tab">
+          <div id="education-container">
+            <div class="education-entry card">
+              <div class="entry-header">
+                <h3>Education Details</h3>
+                <button type="button" class="remove-entry" title="Remove entry">×</button>
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="university">University/College</label>
+                  <input type="text" class="university" name="university" placeholder="e.g. University of California">
+                </div>
+                <div class="field-group">
+                  <label for="degree">Degree</label>
+                  <input type="text" class="degree" name="degree" placeholder="e.g. Bachelor of Science">
+                </div>
+              </div>
+              
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="major">Major</label>
+                  <input type="text" class="major" name="major" placeholder="e.g. Computer Science">
+                </div>
+                <div class="field-group">
+                  <label for="graduationDate">Graduation Date</label>
+                  <input type="text" class="graduationDate" name="graduationDate" placeholder="e.g. May 2022">
+                </div>
+              </div>
+              
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="gpa">GPA</label>
+                  <input type="text" class="gpa" name="gpa" placeholder="e.g. 3.8">
+                </div>
+                <div class="field-group">
+                  <div class="spacer"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="add-education" class="add-button">+ Add Another Education</button>
+        </div>
+        
+        <div class="tab-content" id="skills-tab">
+          <div class="field-row">
+            <div class="field-group full-width">
+              <label for="skills">Skills (separate with commas)</label>
+              <textarea id="skills" name="skills" placeholder="e.g. JavaScript, HTML, CSS, Project Management, Team Leadership"></textarea>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-content" id="ai-settings-tab">
+          <div class="field-row">
+            <div class="field-group full-width">
+              <h3>OpenAI Integration</h3>
+              <p class="settings-description">Add your OpenAI API key to enable advanced form field detection and filling.</p>
+            </div>
+          </div>
+          
+          <div class="field-row">
+            <div class="field-group full-width">
+              <label for="openai-key">OpenAI API Key</label>
+              <input type="password" id="openai-key" name="openaiKey" placeholder="Enter your OpenAI API key">
+              <p class="input-help">Your API key is stored locally and is only used to analyze form fields for better matching.</p>
+            </div>
+          </div>
+          
+          <div class="field-row">
+            <div class="field-group">
+              <button type="button" id="save-key" class="secondary-button">Save API Key</button>
+            </div>
+            <div class="field-group">
+              <div class="spacer"></div>
+            </div>
           </div>
         </div>
         
         <div class="form-actions">
-          <button type="submit" id="save-resume">Save Resume</button>
+          <button type="submit" id="save-resume" class="save-button">Save Resume Data</button>
         </div>
       </form>
     </div>
